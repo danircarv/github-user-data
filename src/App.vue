@@ -1,6 +1,6 @@
 <script setup>
 import {ref} from 'vue'
-import CompositionApi from './components/CompositionApi.vue';
+import CompositionApi from './components/Profile.vue';
 const isOpen = ref(true)
 </script>
 

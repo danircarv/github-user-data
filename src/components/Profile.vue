@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, ref, computed, onMounted, onUpdated, onUnmounted } from 'vue';
+import UserInfo from './UserInfo.vue';
 
 const searchInput = ref('')
 
@@ -61,12 +62,9 @@ onUnmounted(() => {
         <input type="text" v-model="searchInput">
         <button @click="fetchGithubUser">Carregar Usuário</button>
     </form>
+  
     <div v-if="state.login != ''">
-        <img :src="state.avatar_url">
-        <strong>@{{ state.login }}</strong>
-        <h1>{{ state.name }}</h1>
-        <h2>{{ state.company }}</h2>
-        <span>{{ state.bio }}</span>
+        <UserInfo :login="state.login" :name="state.name" :company="state.company" :bio="state.bio" :avatar_url="state.avatar_url"/>
     </div>
 
     <section v-if="state.repos.length > 0">
@@ -81,28 +79,13 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-img {
-    border: 1px solid #e5e5e5;
-    border-radius: 999px;
-    display: block;
-    margin: 1rem auto;
-    width: 8rem;
-    height: 8rem;
-}
-  
-h1, h2 {
-    color: #f64348;
-    margin: 1rem auto .25rem;
-}
+
   
 h3 {
     margin: 1rem auto .25rem;
 }
   
-span{
-    display: block;
-    margin: 1rem auto;
-}
+
   
 input,
 button {
