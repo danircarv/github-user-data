@@ -1,14 +1,9 @@
-<script>
-import Github from './components/Github.vue'
-export default {
-  components: {
-    Github
-  }
-}
+<script setup>
+import CompositionApi from './components/CompositionApi.vue';
 </script>
 
 <template>
-  <Github/>
+  <CompositionApi/>
 </template>
 
 <style>
