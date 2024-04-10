@@ -1,9 +1,12 @@
 <script setup>
+import {ref} from 'vue'
 import CompositionApi from './components/CompositionApi.vue';
+const isOpen = ref(true)
 </script>
 
 <template>
-  <CompositionApi/>
+  <input type="checkbox" v-model="isOpen"> {{ isOpen }}
+  <CompositionApi v-if="isOpen"/>
 </template>
 
 <style >
