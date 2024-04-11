@@ -1,12 +1,23 @@
 <script setup>
+import { useSearchHistoryStore } from '@/storage/useSearchHistoryStore';
 import { ref } from 'vue';
+// import { searchHistory } from '@/storage/searchHistory';
 
 const emit = defineEmits(['formSubmit', 'update:modelValue'])
 const searchInput = ref('')
 
+const searchHistory = useSearchHistoryStore()
+
+
+
 function handleSubmit(ev){
         ev.preventDefault()
+        searchHistory.pushToHistory(searchInput.value)
         emit('formSubmit', searchInput.value)
+}
+
+function showSearchHistory(){
+    alert(`Histórico de Pesquisa: \n${searchHistory.users.join('\n')}`)
 }
 </script>
 
@@ -19,6 +30,7 @@ function handleSubmit(ev){
             @input="$emit('update:modelValue', $event.target.value)"
         >
         <button>Carregar Usuário</button>
+        <button type="button" @click="showSearchHistory">Ver Histórico</button>
     </form>
 </template>
 
@@ -44,6 +56,7 @@ button {
     color: #1c1a1d;
     font-size: 1rem;
     font-weight: 700;
+    margin-left: 1rem;
     text-transform: uppercase;
 }
   
