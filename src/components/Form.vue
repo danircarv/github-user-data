@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const emit = defineEmits(['formSubmit'])
+const emit = defineEmits(['formSubmit', 'update:modelValue'])
 const searchInput = ref('')
 
 function handleSubmit(ev){
@@ -11,8 +11,13 @@ function handleSubmit(ev){
 </script>
 
 <template>
+    
     <form @submit="handleSubmit">
-        <input type="text" v-model="searchInput">
+        <input 
+            type="text" 
+            v-model="searchInput"
+            @input="$emit('update:modelValue', $event.target.value)"
+        >
         <button>Carregar Usuário</button>
     </form>
 </template>
