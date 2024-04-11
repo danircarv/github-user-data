@@ -58,7 +58,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <h2>GitHub User Data</h2>
+    <slot></slot>
     <p>Pesquisando por <strong>https://api.github.com/users/{{ username }}</strong></p>
     <Form @form-submit="fetchGithubUser" v-model="username"/>
   
@@ -70,16 +70,7 @@ onUnmounted(() => {
         <Repository v-for="repo of state.repos" :full_name="repo.full_name" :description="repo.description" :html_url="repo.html_url"/>
       </article>
     </section>
-    
+
+    <slot name="footer"></slot>  
 </template>
 
-<style scoped>
-h2{
-    color:#f64348 ;
-    margin: 1rem auto .25rem;
-}
-  
-
-  
-
-</style>

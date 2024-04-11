@@ -1,12 +1,19 @@
 <script setup>
 import {ref} from 'vue'
-import CompositionApi from './components/Profile.vue';
+import Profile from './components/Profile.vue';
 const isOpen = ref(true)
 </script>
 
 <template>
   <input type="checkbox" v-model="isOpen"> {{ isOpen }}
-  <CompositionApi v-if="isOpen"/>
+  <Profile v-if="isOpen">
+    <h1>GitHub User Data</h1>
+    <template v-slot:footer>
+      <footer>
+        Desenvolvido por <a href="https://github.com/danircarv" target="_blank">Daniel Rodrigues</a>
+      </footer>
+    </template>
+  </Profile>
 </template>
 
 <style >
@@ -19,6 +26,19 @@ const isOpen = ref(true)
     overflow: hidden;
 
 }
+
+h1{
+    color:#f64348 ;
+    margin: 1rem auto .25rem;
+}
+
+footer{
+  height: 3rem;
+  margin-top: 2rem;
+  padding: 1rem 0 ;
+
+}
+ 
 
 a {
     color: #f64348;
