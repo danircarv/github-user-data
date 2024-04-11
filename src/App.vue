@@ -17,5 +17,10 @@ const isOpen = ref(true)
     margin: 0 auto;
     text-align: center;
     overflow: hidden;
+
+}
+
+a {
+    color: #f64348;
 }
 </style>
